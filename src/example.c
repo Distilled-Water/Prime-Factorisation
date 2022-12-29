@@ -44,23 +44,21 @@ int main() {
                 if(strcmp(bufferTwo, "--Ur number is too big!                       ") == 0){
                     PrintXY(1, 4, "--ERROR!                     ", 0, TEXT_COLOR_RED);
                     PrintXY(1, 5, bufferTwo, 0, TEXT_COLOR_RED); //prints the prime factors
+                    PrintXY(0, 6, "--                                            ", 0, TEXT_COLOR_BLUE); 
+                    PrintXY(0, 7, "--                                            ", 0, TEXT_COLOR_BLUE);
                 }
                 else{
 
                     
 
-
-                    //PrintXY(1, 4, bufferTwo, 0, TEXT_COLOR_BLUE); //prints the prime factors
-                    //PrintXY(1, 5, "--                      ", 0, TEXT_COLOR_BLACK);
-
                     //==================================//
 
 
                     // initialize the lines to be outputted
-                    char lineOne[24] = {0}; lineOne[0] = lineOne[1] = '-';
-                    char lineTwo[24] = {0}; lineTwo[0] = lineTwo[1] = '-';
-                    char lineThree[24] = {0}; lineThree[0] = lineThree[1] = '-';
-                    char lineFour[24] = {0}; lineFour[0] = lineFour[1] = '-';
+                    char lineOne[24] = {0}; lineOne[0] = '-';
+                    char lineTwo[24] = {0}; 
+                    char lineThree[24] = {0}; 
+                    char lineFour[24] = {0}; 
 
                     int p = 0;
                     int maxLineLength = 21;
@@ -90,17 +88,21 @@ int main() {
                         }
                     }
 
-                    //bugs:
-                    //  fix extra spaces at the start of line2,3,4
-                    //  error messages not overlayed properly
+                    if(lineTwo[3] == ' '){
+                        PrintXY(1, 4, lineOne, 0, TEXT_COLOR_BLUE);
+                        PrintXY(0, 5, lineTwo, 0, TEXT_COLOR_BLUE); 
+                        PrintXY(0, 6, "--                                            ", 0, TEXT_COLOR_BLUE); 
+                        PrintXY(0, 7, "--                                            ", 0, TEXT_COLOR_BLUE);
+                    }
+                    else{
 
-
-                    //print all the lines
-                    PrintXY(1, 4, lineOne, 0, TEXT_COLOR_BLUE);
-                    PrintXY(1, 5, lineTwo, 0, TEXT_COLOR_BLUE);
-                    PrintXY(1, 6, lineThree, 0, TEXT_COLOR_BLUE);
-                    PrintXY(1, 7, lineFour, 0, TEXT_COLOR_BLUE);
-
+                    
+                        //print all the lines
+                        PrintXY(1, 4, lineOne, 0, TEXT_COLOR_BLUE); PrintXY(22, 5, "--       ",0, TEXT_COLOR_BLUE);
+                        PrintXY(0, 5, lineTwo, 0, TEXT_COLOR_BLUE); PrintXY(22, 5, "--       ",0, TEXT_COLOR_BLUE);
+                        PrintXY(0, 6, lineThree, 0, TEXT_COLOR_BLUE); PrintXY(22, 6, "--       ",0, TEXT_COLOR_BLUE);
+                        PrintXY(0, 7, lineFour, 0, TEXT_COLOR_BLUE); PrintXY(22, 7, "--       ",0, TEXT_COLOR_BLUE);
+                    }
                     //==================================//
 
                 }
@@ -110,6 +112,8 @@ int main() {
             else{
                 PrintXY(1, 4, "--ERROR!                  ", 0, TEXT_COLOR_RED);
                 PrintXY(1, 5, "--Input must be an int!", 0, TEXT_COLOR_RED);
+                PrintXY(0, 6, "--                                            ", 0, TEXT_COLOR_BLUE); 
+                PrintXY(0, 7, "--                                            ", 0, TEXT_COLOR_BLUE);
             }
 
             buffer[0] = '\0'; //adds '' to the start of the string
@@ -181,7 +185,7 @@ char* primeFactorsAsString(int n) {
     factors = primeFactors(n);
 
     if (factors[0] > 25) {
-        return "Ur number is too big!                       ";
+        return "--Ur number is too big!                       ";
     }
     static char result[100];
     result[0] = 0;
